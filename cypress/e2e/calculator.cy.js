@@ -53,6 +53,14 @@ describe("Calculator", () => {
     cy.get('#operator-equals').click();
     cy.get('.display').should('contain', '20999')
   })
+  it('should not be able to be divided by 0', () => {
+    cy.get('#number2').click();
+    cy.get('#number0').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number0').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', 'ERR')
+  })
 })
 
 // Do the number buttons update the display of the running total?
